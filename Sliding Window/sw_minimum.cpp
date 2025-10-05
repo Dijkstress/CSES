@@ -8,19 +8,19 @@ void solve(vector<ll> &arr,ll k,ll n){
     deque<ll>dq;
 
     for(ll i=0;i<n;i++){
-        if(!dq.empty() && dq.front()<=i-k){
+       while(!dq.empty() && dq.front()<=i-k){
             dq.pop_front();
-        }
+       }
 
-        if(!dq.empty() && arr[dq.back()]>=arr[i]){
+       while(!dq.empty() && arr[dq.back()]>=arr[i]){
             dq.pop_back();
-        }
+       }
 
-        dq.push_back(i);
+       dq.push_back(i);
 
-        if(i>=k-1){
+       if(i>=k-1){
             ans^=arr[dq.front()];
-        }
+       }
     }
     cout<<ans<<endl;
 }
